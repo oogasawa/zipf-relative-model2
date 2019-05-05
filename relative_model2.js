@@ -20,7 +20,7 @@ async function main() {
 	
 	let simul = actorSystem
 		.rootActor() // Get a root actor reference.
-		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor", mode: "forked"))
+		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor", {mode: "forked"}))
 
 	simul.then(s=>s.send("createChild", "192.168.11.14"));
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
