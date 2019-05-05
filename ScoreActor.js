@@ -11,7 +11,7 @@ class ScoreActor {
 	}
 
 	stress(sec) {
-		exec(sprintf("stress -c 1 --timeout %d" + sec),
+		exec(sprintf("stress -c 1 --timeout %d", sec),
 			 (err, stdout, stderr)=>{}
 			);
 	}
