@@ -21,6 +21,10 @@ class SimulationActor {
 	}
 
 
+	stress(sec) {
+		this.children.forEach(ch=>ch.stress(sec));
+	}
+	
 	info() {
 		console.log("Are you there?");
 		console.log(this.children.length);

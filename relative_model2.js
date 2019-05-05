@@ -19,7 +19,7 @@ async function main() {
 	let actorSystem = actors({
 		clusters: {
 			alpha: ["192.168.11.14"],
-			beta: ["192.168.11.14", "192.168.11.14"]
+			beta: ["192.168.11.14", "192.168.11.24"]
 		}
 	});
 	
@@ -27,11 +27,14 @@ async function main() {
 		.rootActor() // Get a root actor reference.
 		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor"))
 
-	await sleep(1000); // <= !!! important !!!
-	simul.then(s=>s.send("createChild"));
-	simul.then(s=>s.send("createChild"));
+	for (let i=0; i<5; i++) {
+		simul.then(s=>s.send("createChild"));
+	}
 	await sleep(1000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
+	await sleep(1000);
+	simul.then(s=>s.stress(30));
+
 }
   
 main();
