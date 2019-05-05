@@ -22,7 +22,7 @@ class SimulationActor {
 
 
 	stress(sec) {
-		this.children.forEach(ch=>ch.stress(sec));
+		this.children.forEach(ch=>ch.send("stress", sec));
 	}
 	
 	info() {
