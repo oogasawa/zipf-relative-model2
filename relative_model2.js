@@ -3,40 +3,11 @@
  
 var actors = require('comedy');
 var sprintf = require("sprintf-js").sprintf;
+//var ScoreActor = require('ScoreActor');
+//var SimulationActor = require('SimulationActor');
 
+var basePath="/worksXX/ESMS/zipf-relative-model2";
 
-class ScoreActor {
-	initialize(selfActor) {
-		this.selfActor = selfActor;
-	}
-}
-
-
-
-class SimulationActor {
-	initialize(selfActor) {
-		this.selfActor = selfActor;
-		this.children = [];
-	}
-
-	createChild() {
-		this.selfActor.createChild(ScoreActor, {mode: "remote", cluster: "beta"})
-			.then(childActor => {
-				// Save created child actor to instance field.
-				this.children.push(childActor);
-			});
-		//console.log("simulation actor: " + this.selfActor.getId());
-	}
-
-
-	info() {
-		console.log("Are you there?");
-		console.log(this.children.length);
-		this.children.forEach(ch=>console.log(ch.getId()));
-	}
- 
-}
- 
 // ---
  
 function sleep(ms) {
@@ -54,7 +25,7 @@ async function main() {
 	
 	let simul = actorSystem
 		.rootActor() // Get a root actor reference.
-		.then(rootActor => rootActor.createChild(SimulationActor))
+		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor"))
 
 	await sleep(1000); // <= !!! important !!!
 	simul.then(s=>s.send("createChild"));
