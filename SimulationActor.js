@@ -11,8 +11,8 @@ class SimulationActor {
 		this.children = [];
 	}
 
-	createChild() {
-		this.selfActor.createChild(basePath + "/ScoreActor", {mode: "remote", cluster: "beta"})
+	createChild(ip) {
+		this.selfActor.createChild(basePath + "/ScoreActor", {mode: "remote", host: ip})
 			.then(childActor => {
 				// Save created child actor to instance field.
 				this.children.push(childActor);

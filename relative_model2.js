@@ -16,20 +16,16 @@ function sleep(ms) {
  
  
 async function main() {
-	let actorSystem = actors({
-		clusters: {
-			alpha: ["192.168.11.14"],
-			beta: ["192.168.11.14", "192.168.11.24"]
-		}
-	});
+	let actorSystem = actors();
 	
 	let simul = actorSystem
 		.rootActor() // Get a root actor reference.
-		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor"))
+		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor", mode: "forked"))
 
-	for (let i=0; i<5; i++) {
-		simul.then(s=>s.send("createChild"));
-	}
+	simul.then(s=>s.send("createChild", "192.168.11.14"));
+	simul.then(s=>s.send("createChild", "192.168.11.24"));
+	simul.then(s=>s.send("createChild", "192.168.11.24"));
+
 	await sleep(1000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
 	await sleep(1000);
