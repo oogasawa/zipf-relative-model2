@@ -6,7 +6,7 @@ var sprintf = require("sprintf-js").sprintf;
 //var ScoreActor = require('ScoreActor');
 //var SimulationActor = require('SimulationActor');
 
-var basePath="/worksXX/ESMS/zipf-relative-model2";
+var basePath="/worksXX/ESMS/zipf-relative-model2/prototype3";
 
 // ---
  

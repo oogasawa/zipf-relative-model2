@@ -300,7 +300,7 @@ class HaploidPopulation {
 
 
 
-var basePath="/worksXX/ESMS/zipf-relative-model2";
+var basePath="/worksXX/ESMS/zipf-relative-model2/prototype3";
 
 class SimulationActor {
 
