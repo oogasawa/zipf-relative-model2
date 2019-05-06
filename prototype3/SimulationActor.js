@@ -354,7 +354,7 @@ class SimulationActor {
 		popA.scoreArray = this.scoreArray;
 		console.log(popA.report(0));
 		
-		for (let gen=1; gen<100; gen++) {
+		for (let gen=1; gen<20; gen++) {
 			let popB = popA.propagate();
 			this.calcScoreArray(popB);
 			while (this.scoreArray.length < parameter.populationSize) {
@@ -366,10 +366,10 @@ class SimulationActor {
 		}
 		
 		//-----
-		console.log("# --- the last population ---");
-		for (let i=0; i<parameter.populationSize; i++) {
-			console.log(popA.individuals[i].report(i));
-		}
+		//console.log("# --- the last population ---");
+		//for (let i=0; i<parameter.populationSize; i++) {
+		//	console.log(popA.individuals[i].report(i));
+		//}
 
 	}
 
