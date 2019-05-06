@@ -6,9 +6,11 @@ var sprintf = require("sprintf-js").sprintf;
 var basePath="/worksXX/ESMS/zipf-relative-model2";
 
 class SimulationActor {
+
 	initialize(selfActor) {
 		this.selfActor = selfActor;
 		this.children = [];
+		this.result   = [];
 	}
 
 	createChild(ip) {
@@ -21,8 +23,20 @@ class SimulationActor {
 	}
 
 
-	stress(sec) {
-		this.children.forEach(ch=>ch.send("stress", sec));
+	async stress(sec) {
+
+		for (let i=0; i<10000; i++) {
+			this.children[10000%i]
+				.sendAndReceive("stress", sec)
+				.then(reply=>{
+					this.result.push(reply);
+				});
+
+			while (i - this.result.length > 100) { // flow control.
+				await sleep(1000);
+			}
+		}
+
 	}
 	
 	info() {
