@@ -236,7 +236,7 @@ class HaploidPopulation {
 	}
 
 	
-
+/*
 	calcScoreArray() {
 		for (let i=0; i<parameter.populationSize; i++) {
 			let s = this.individuals[i].calcScore();
@@ -244,7 +244,7 @@ class HaploidPopulation {
 			this.scoreArray.push({index: i, score: s});
 		}
 	}
-
+*/
 	
 	
 	propagate() {
@@ -334,9 +334,6 @@ class SimulationActor {
 			}
 		}
 		
-		while (this.scoreArray.length < parameter.populationSize) {
-			await sleep(1000);
-		}
 	}
 	
 
@@ -351,6 +348,9 @@ class SimulationActor {
 		popA.init("normal");
 		//popA.calcScoreArray();
 		this.calcScoreArray(popA);
+		while (this.scoreArray.length < parameter.populationSize) {
+			await sleep(1000);
+		}
 		popA.scoreArray = this.scoreArray;
 		console.log(popA.report(0));
 		
