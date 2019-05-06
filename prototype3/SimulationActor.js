@@ -44,7 +44,7 @@ class Parameter {
 
 		this.standardDeviation  = 0.01;
 		this.propOfMutatedGenes = 0.001;
-		this.populationSize     = 10;
+		this.populationSize     = 100;
 
 		this.c1 = 0.3;
 		this.c2 = 2/3;
