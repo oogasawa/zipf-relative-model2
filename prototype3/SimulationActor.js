@@ -326,7 +326,7 @@ class SimulationActor {
 			let a = pop.individuals[ind].genome.freq;
 			//let a = [1,2,3];
 			this.childActors[ind%numOfChildActors]
-				.sendAndReceive("calcScore", a, parameter.numOfGenes)
+				.sendAndReceive("calcScore", a, ind, parameter.numOfGenes)
 				.then(reply=>this.scoreArray.push(reply));
 			
 			while (ind - this.scoreArray.length > 2) { // flow control

@@ -11,17 +11,17 @@ class ScoreActor {
 	}
 
 	
-	calcScore(freq, numOfGenes) {
-		let score = 0;
+	calcScore(freq, ind, numOfGenes) {
+		let sc = 0;
 		for (let i=0; i<numOfGenes; i++) {
 			for (let j=i+1; j<numOfGenes; j++) {
 				if (freq[i] > freq[j]) {
-					score ++;
+					sc ++;
 				}
 			}
 		}
 
-		return score;
+		return {index: ind, score: sc};
 	}
 
 
