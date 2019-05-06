@@ -328,12 +328,12 @@ class SimulationActor {
 				.sendAndReceive("calcScore", a, parameter.numOfGenes)
 				.then(reply=>this.scoreArray.push(reply));
 			
-			while (ind - this.results.length > 100) { // flow control
+			while (ind - this.scoreArray.length > 100) { // flow control
 				await sleep(1000);
 			}
 		}
 		
-		while (this.results.length < parameters.populationSize) {
+		while (this.scoreArray.length < parameters.populationSize) {
 			await sleep(1000);
 		}
 	}
