@@ -374,7 +374,7 @@ class SimulationActor {
 
 	info() {
 		console.log("Are you there?");
-		console.log(this.children.length);
+		console.log(this.childActors.length);
 		this.children.forEach(ch=>console.log(ch.getId()));
 	}
 	
