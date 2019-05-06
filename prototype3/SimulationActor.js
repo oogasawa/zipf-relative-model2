@@ -357,6 +357,9 @@ class SimulationActor {
 		for (let gen=1; gen<100; gen++) {
 			let popB = popA.propagate();
 			this.calcScoreArray(popB);
+			while (this.scoreArray.length < parameter.populationSize) {
+				await sleep(1000);
+			}
 			popB.scoreArray = this.scoreArray;
 			console.log(popB.report(gen));
 			popA = popB;
