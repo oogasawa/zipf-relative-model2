@@ -29,7 +29,7 @@ async function main() {
 	await sleep(1000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
 	await sleep(1000);
-	simul.then(s=>s.send("stress", 30));
+	simul.then(s=>s.send("start"));
 
 }
   
