@@ -10,8 +10,8 @@ var libR = require("lib-r-math.js");
 
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const {
 	Normal, Poisson,
@@ -188,19 +188,19 @@ class HaploidIndividual {
 	}
 
 	/*
-	calcScore() {
-		let score = 0;
-		for (let i=0; i<parameter.numOfGenes; i++) {
-			for (let j=i+1; j<parameter.numOfGenes; j++) {
-				if (this.genome.freq[i] > this.genome.freq[j]) {
-					score ++;
-				}
-			}
-		}
+	  calcScore() {
+	  let score = 0;
+	  for (let i=0; i<parameter.numOfGenes; i++) {
+	  for (let j=i+1; j<parameter.numOfGenes; j++) {
+	  if (this.genome.freq[i] > this.genome.freq[j]) {
+	  score ++;
+	  }
+	  }
+	  }
 
-		return score;
-	}
-*/
+	  return score;
+	  }
+	*/
 
 
 	makeChild() {
@@ -372,7 +372,7 @@ class SimulationActor {
 		console.log(this.children.length);
 		this.children.forEach(ch=>console.log(ch.getId()));
 	}
- 
+	
 }
 
 module.exports = SimulationActor;
