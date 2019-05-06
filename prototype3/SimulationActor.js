@@ -323,8 +323,8 @@ class SimulationActor {
 		this.scoreArray = [];
 		let numOfChildActors = this.childActors.length;
 		for (let ind=0; ind<parameter.populationSize ; ind++) {
-			//let a = pop.individuals[ind].genome.freq;
-			let a = [1,2,3];
+			let a = pop.individuals[ind].genome.freq;
+			//let a = [1,2,3];
 			this.childActors[ind%numOfChildActors]
 				.sendAndReceive("calcScore", a, parameter.numOfGenes)
 				.then(reply=>this.scoreArray.push(reply));
