@@ -307,7 +307,7 @@ class SimulationActor {
 	initialize(selfActor) {
 		this.selfActor = selfActor;
 		this.childActors = [];
-		this.results   = [];
+		this.scoreArray   = [];
 	}
 
 	createChild(ip) {
@@ -319,6 +319,25 @@ class SimulationActor {
 		//console.log("simulation actor: " + this.selfActor.getId());
 	}
 
+	async calcScoreArray(pop) {
+		this.scoreArray = [];
+		let numOfChildActors = this.childActors.length;
+		for (let ind=0; ind<parameter.populationSize ; ind++) {
+			let a = pop.individuals[ind].genome.freq;
+			this.childActors[ind%numOfChildActors]
+				.sendAndReceive("calcScore", a, parameter.numOfGenes)
+				.then(reply=>this.scoreArray.push(reply));
+			
+			while (ind - this.results.length > 100) { // flow control
+				await sleep(1000);
+			}
+		}
+		
+		while (this.results.length < parameters.populationSize) {
+			await sleep(1000);
+		}
+	}
+	
 
 	async start() {
 		console.log(parameter.report());
@@ -329,30 +348,15 @@ class SimulationActor {
 		
 		let popA = new HaploidPopulation();
 		popA.init("normal");
-		popA.calcScoreArray();
+		//popA.calcScoreArray();
+		this.calcScoreArray(popA);
+		popA.scoreArray = this.scoreArray();
 		console.log(popA.report(0));
 		
 		for (let gen=1; gen<100; gen++) {
 			let popB = popA.propagate();
-			
-			/* ----- popB.calcScoreArray();  ----- */
-			let numOfChildActors = this.childActors.length;
-			for (let ind=0; ind<parameter.populationSize ; ind++) {
-				let a = popB.individuals[ind].genome.freq;
-				this.childActors[ind%numOfChildActors]
-					.sendAndReceive("calcScore", a, parameter.numOfGenes)
-					.then(reply=>this.results.push(reply));
-
-				while (ind - this.results.length > 100) { // flow control
-					await sleep(1000);
-				}
-			}
-
-			while (this.results.length < parameters.populationSize) {
-				await sleep(1000);
-			}
-			/* ----- ----- */
-			
+			this.calcScoreArray(popB);
+			popB.scoreArray = this.scoreArray;
 			console.log(popB.report(gen));
 			popA = popB;
 		}
