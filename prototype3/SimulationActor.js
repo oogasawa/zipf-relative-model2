@@ -40,7 +40,7 @@ class Parameter {
 		// simulation parameters.
 		this.minRna   = 1.0;
 		this.totalRna = 300000;
-		this.numOfGenes = 100;
+		this.numOfGenes = 1000;
 
 		this.standardDeviation  = 0.01;
 		this.propOfMutatedGenes = 0.001;
