@@ -351,7 +351,7 @@ class SimulationActor {
 		popA.init("normal");
 		//popA.calcScoreArray();
 		this.calcScoreArray(popA);
-		popA.scoreArray = this.scoreArray();
+		popA.scoreArray = this.scoreArray;
 		console.log(popA.report(0));
 		
 		for (let gen=1; gen<100; gen++) {
