@@ -26,7 +26,7 @@ async function main() {
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
 
-	await sleep(1000); // <= !!! important !!!
+	await sleep(2000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
 	await sleep(1000);
 	simul.then(s=>s.send("stress", 30));

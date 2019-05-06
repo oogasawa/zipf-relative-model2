@@ -25,7 +25,7 @@ class SimulationActor {
 
 	async stress(sec) {
 		for (let i=0; i<this.children.length; i++) {
-			this.children.send("stress", sec);
+			this.children[i].send("stress", sec);
 		}
 	}
 	
