@@ -10,6 +10,21 @@ class ScoreActor {
 		this.selfActor = selfActor;
 	}
 
+	
+	calcScore(freq) {
+		let score = 0;
+		for (let i=0; i<parameter.numOfGenes; i++) {
+			for (let j=i+1; j<parameter.numOfGenes; j++) {
+				if (freq[i] > freq[j]) {
+					score ++;
+				}
+			}
+		}
+
+		return score;
+	}
+
+
 	stress(sec) {
 		exec(sprintf("stress -c 1 --timeout %d", sec),
 			 (err, stdout, stderr)=>{}
