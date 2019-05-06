@@ -336,11 +336,11 @@ class SimulationActor {
 			let popB = popA.propagate();
 			
 			/* ----- popB.calcScoreArray();  ----- */
-			let numChildActors = this.childActors.length;
+			let numOfChildActors = this.childActors.length;
 			for (let ind=0; ind<parameter.populationSize ; ind++) {
 				let a = popB.individuals[ind].genome.freq;
-				this.childActors[ind%numChildActors]
-					.sendAndReceive("calcScore", a)
+				this.childActors[ind%numOfChildActors]
+					.sendAndReceive("calcScore", a, parameter.numOfGenes)
 					.then(reply=>this.results.push(reply));
 
 				while (ind - this.results.length > 100) { // flow control
