@@ -333,7 +333,7 @@ class SimulationActor {
 			}
 		}
 		
-		while (this.scoreArray.length < parameters.populationSize) {
+		while (this.scoreArray.length < parameter.populationSize) {
 			await sleep(1000);
 		}
 	}
