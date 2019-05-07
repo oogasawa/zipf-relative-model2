@@ -369,19 +369,29 @@ class SimulationActor {
 		    popA = popB;
 
 		    console.log(process.memoryUsage());
+
+			if (gen % 1000 == 0) {
+				console.log(sprintf("# --- populaton in the generation %d ---", gen));
+				this.printSnapshot(popA);
+				console.log("# ---");
+			}
+			
 		}
 		
 		//-----
-		 console.log("# --- the last population ---");
-		for (let i=0; i<parameter.populationSize; i++) {
-			console.log(popA.individuals[i].report(i));
-	    }
+		console.log("# --- the last population ---");
+		this.printSnapshot();
 
 	    return "finished!";
-
-
 	}
 
+
+	printSnapshot(pop) {
+		for (let i=0; i<parameter.populationSize; i++) {
+			console.log(pop.individuals[i].report(i));
+	    }
+	}
+	
 	
 
 	info() {
