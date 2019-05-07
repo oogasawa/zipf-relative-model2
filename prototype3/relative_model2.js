@@ -23,19 +23,21 @@ async function main() {
 		.then(rootActor => rootActor.createChild(basePath + "/SimulationActor", {mode: "forked"}))
 
 
+
     for (let i=0; i<8; i++) {
 	simul.then(s=>s.send("createChild", "192.168.5.11"));
     }
     for (let i=0; i<8; i++) {
 	simul.then(s=>s.send("createChild", "192.168.5.12"));
     }
-	
+
 	await sleep(2000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
 	await sleep(1000);
-    simul.then(s=>s.sendAndReceive("start"))
-	.then(reply=>{console.log(reply)})
-	.finally(()=>actorSystem.destroy());
+	simul.then(s=>s.sendAndReceive("start"))
+		.then(reply=>{console.log(reply)})
+		.finally(()=>actorSystem.destroy());
+
 
 }
   
