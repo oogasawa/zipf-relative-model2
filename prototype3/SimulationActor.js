@@ -8,6 +8,7 @@ var StringBuilder = require("node-stringbuilder");
 var sprintf = require("sprintf-js").sprintf;
 var libR = require("lib-r-math.js");
 
+var basePath="/zipf-relative-model2/prototype3";
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -300,7 +301,7 @@ class HaploidPopulation {
 
 
 
-var basePath="/worksXX/ESMS/zipf-relative-model2/prototype3";
+
 
 class SimulationActor {
 
@@ -366,10 +367,12 @@ class SimulationActor {
 		}
 		
 		//-----
-		//console.log("# --- the last population ---");
+		// console.log("# --- the last population ---");
 		//for (let i=0; i<parameter.populationSize; i++) {
 		//	console.log(popA.individuals[i].report(i));
-		//}
+	    //}
+
+	    return "finished!";
 
 	}
 
