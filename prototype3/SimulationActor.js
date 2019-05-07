@@ -300,9 +300,6 @@ class HaploidPopulation {
 //----------
 
 
-
-
-
 class SimulationActor {
 
 	initialize(selfActor) {
@@ -321,7 +318,9 @@ class SimulationActor {
 	}
 
 	async calcScoreArray(pop) {
+		delete this.scoreArray;
 		this.scoreArray = [];
+		
 		let numOfChildActors = this.childActors.length;
 		for (let ind=0; ind<parameter.populationSize ; ind++) {
 			let a = pop.individuals[ind].genome.freq;

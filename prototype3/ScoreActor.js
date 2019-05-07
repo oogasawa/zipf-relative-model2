@@ -21,7 +21,7 @@ class ScoreActor {
 			}
 		}
 
-		console.log(sprintf("## %s", this.selfActor.getId()));
+		//console.log(sprintf("## %s", this.selfActor.getId()));
 		return {index: ind, score: sc};
 	}
 
