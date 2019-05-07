@@ -1,6 +1,13 @@
 {
-  "name": "zipf-relative-model2",
-  "version": "1.0.0",
+	"name": "zipf-relative-model2",
+	"version": "1.0.0",
+		"dependencies": {
+			"fast-sort": "^1.5.6",
+			"node-stringbuilder": "^2.2.6",
+			"sprintf-js": "^1.1.2",
+			"lib-r-math.js": "^1.0.86",
+			"shelljs": "^0.8.3"
+	},
   "description": "Concurrent version of the relative model of gene expression evolution",
   "main": "relative_model2.js",
   "scripts": {

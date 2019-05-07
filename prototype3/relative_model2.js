@@ -26,12 +26,16 @@ async function main() {
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
 	simul.then(s=>s.send("createChild", "192.168.11.24"));
-//	simul.then(s=>s.send("createChild", "192.168.11.14"));
+	simul.then(s=>s.send("createChild", "192.168.11.14"));
+	simul.then(s=>s.send("createChild", "192.168.11.14"));
 	
 	await sleep(2000); // <= !!! important !!!
 	simul.then(s=>s.send("info"));
 	await sleep(1000);
-	simul.then(s=>s.send("start"));
+	simul.then(s=>s.sendAndReceive("start"))
+		.then(reply=>{console.log(reply)})
+		.finally(()=>actorSystem.destroy());
+
 
 }
   

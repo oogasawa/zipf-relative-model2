@@ -370,7 +370,8 @@ class SimulationActor {
 		//for (let i=0; i<parameter.populationSize; i++) {
 		//	console.log(popA.individuals[i].report(i));
 		//}
-
+		
+		return "finished!";
 	}
 
 	
