@@ -330,7 +330,7 @@ class SimulationActor {
 				.then(reply=>this.scoreArray.push(reply));
 			
 			while (ind - this.scoreArray.length > 2) { // flow control
-				await sleep(1000);
+				await sleep(10);
 			}
 		}
 		
@@ -349,7 +349,7 @@ class SimulationActor {
 		//popA.calcScoreArray();
 		this.calcScoreArray(popA);
 		while (this.scoreArray.length < parameter.populationSize) {
-			await sleep(100);
+			await sleep(10);
 		}
 		popA.scoreArray = this.scoreArray;
 		console.log(popA.report(0));
@@ -358,7 +358,7 @@ class SimulationActor {
 			let popB = popA.propagate();
 			this.calcScoreArray(popB);
 			while (this.scoreArray.length < parameter.populationSize) {
-				await sleep(100);
+				await sleep(10);
 			}
 			popB.scoreArray = this.scoreArray;
 		    console.log(popB.report(gen));
